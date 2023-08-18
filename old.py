@@ -61,13 +61,15 @@ async def join(ctx, minutes=DEFAULT_NUM_EXERCISES, plank=False):
         await asyncio.sleep(1)
 
     for i in range(minutes):
-        await ctx.send(f"{i+1}. {ab_exercises[i]}", tts=True)
-        
+        await ctx.send(f"{i+1}. {ab_exercises[i]} in 5 seconds", tts=True)
+        await asyncio.sleep(5)
+
+        await ctx.send(f"{ab_exercises[i]} GO GO GO", tts=True)
         await asyncio.sleep(DEFAULT_EXERCISE_TIME)
 
         await ctx.send(f"Rest for {DEFAULT_REST_TIME} seconds", tts=True)
 
-        await asyncio.sleep(DEFAULT_REST_TIME)
+        await asyncio.sleep(DEFAULT_REST_TIME - 5)
 
     await ctx.send("Finished nightly abs. congrats brvther. wagmi", tts=True)
 
